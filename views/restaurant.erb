@@ -1,1 +1,20 @@
-<h1> Hey </h1>
+
+<div class="row">
+    <div class="col-sm-9">
+
+        <h1><%= @restaurant[:title] %></h1>
+        <p><%= @restaurant[:description] %></p>
+
+        <% for recommend in @rsvps %>
+            <div class="media">
+                <% if rsvp[:going] %>
+                    <i class="fas fa-thumbs-up fa-3x mr-3"></i>
+                <% else %>
+                    <i class="fas fa-thumbs-down fa-3x mr-3"></i>
+                <% end %>
+                <div class="media-body">
+                    <h5 class="mt-0"><%= @users_table.where(id: rsvp[:user_id]).to_a[0][:name] %></h5>
+                    <%= rsvp[:comments] %>
+                </div>
+            </div>
+        <% end %>

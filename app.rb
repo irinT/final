@@ -28,6 +28,7 @@ end
 get "/restaurants/:id" do
     @restaurant = restaurants_table.where(id: params[:id]).to_a[0]
 
-end view "restaurant"
+    view "restaurant"
+end 
 
 
