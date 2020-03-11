@@ -14,5 +14,20 @@ before { puts; puts "--------------- NEW REQUEST ---------------"; puts }       
 after { puts; }                                                                       #
 #######################################################################################
 
-events_table = DB.from(:events)
+restaurants_table = DB.from(:restaurants)
+recom_table = DB.from(:recom)
 rsvps_table = DB.from(:rsvps)
+users_table = DB.from(:users)
+
+get "/" do
+    puts restaurants_table.all
+    @restaurants = restaurants_table.to_a
+    view "restaurants"
+end
+
+get "/restaurants/:id" do
+    @restaurant = restaurants_table.where(id: params[:id]).to_a[0]
+
+end view "restaurant"
+
+
